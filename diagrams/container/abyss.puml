@@ -1,0 +1,70 @@
+@startuml
+
+!include <C4/C4_Container>
+
+Person(user,"User","Uses online cinema, watches films, has fun")
+Person(admin,"Admin","Creates new content")
+
+System(abyss,"Cinema-Abyss System","Aggregates Content, Provides Service")
+System_Ext(recs,"External recs","External recs")
+System_Ext(extCinemas,"External cinemas","External cinemas")
+System_Ext(paymentBus,"paymentBus","paymentBus")
+Container_Boundary(abyss,"Cinema-Abyss System") {
+Container(userManagement,"User Management", "Registry of users and their profiles")
+Container(authProvider,"Auth provider", "Manages roles and handles all auth")
+Container(sales,"Sales Service", "Manages different sales")
+Container(meta,"Meta Service", "Meta Service")
+Container(cinemaIntegrationService,"cinema integration Service", "Integration Service")
+Container(video,"Video Streaming", "Video Streaming")
+Container(content,"Content catalog", "Content catalog")
+Container(payment,"Payment service", "Payment service")
+
+Container(bffWeb,"Bff web", "BFF WEB")
+Container(bffTV,"Bff TV", "BFF TV")
+Container(bffMobile,"Bff Mobile", "BFF Mobile")
+Container(gateway,"gateway", "Handles routes, auth, rates")
+Container(innerGateway,"innerGateway", "Handles routes to microservices")
+
+Container(s3,"File storage", "File Storage")
+Container(db,"Db", "Db")
+Container(metaDb,"MetaDb", "MetaDb")
+Container(kafka,"Broker", "Broker")
+
+}
+
+Rel(user,gateway,"Requests")
+Rel(admin,gateway,"Requests")
+Rel(gateway,bffWeb,"Requests")
+Rel(gateway,bffTV,"Requests")
+Rel(gateway,bffMobile,"Requests")
+
+Rel(bffWeb,innerGateway,"Requests")
+Rel(bffTV,innerGateway,"Requests")
+Rel(bffMobile,innerGateway,"Requests")
+
+Rel(gateway,authProvider,"Authorize user")
+
+Rel(userManagement,authProvider,"Link profile and identity")
+
+Rel(cinemaIntegrationService,kafka,"Video downloaded event")
+Rel(cinemaIntegrationService,s3,"Uploads video")
+Rel(cinemaIntegrationService,extCinemas,"Download video")
+
+
+Rel(innerGateway,content,"Creates new content")
+Rel(innerGateway,userManagement,"Creates account")
+Rel(innerGateway,sales,"Looks sales")
+Rel(innerGateway,meta,"Looks meta")
+Rel(innerGateway,payment,"Pays")
+Rel(content,kafka,"Creates new content event")
+Rel(content,db,"Stores data")
+Rel(kafka,content,"Consumes events")
+
+Rel(gateway,video,"Streaming video")
+Rel(video,s3,"Streaming video")
+Rel(meta,metaDb,"Stores meta")
+
+Rel(kafka,recs,"Stores recs")
+Rel(payment,paymentBus,"Pays")
+
+@enduml
