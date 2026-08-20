@@ -1,0 +1,40 @@
+server:
+  port: ${SERVER_PORT:8080}
+  forward-headers-strategy: framework
+
+spring:
+  application:
+    name: servlet-gateway-proxy
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: events-upstream
+            uri: ${EVENTS_SERVICE_URL:http://events-service:8082}
+            predicates:
+              - Path=/api/events/**
+
+
+proxy:
+  # single | weighted | disabled
+  mode: ${GRADUAL_MIGRATION:single}
+
+  weight: ${MOVIES_MIGRATION_PERCENT:0}
+  # Used only with PROXY_MODE=weighted
+
+  upstream-a:
+    uri: ${MONOLITH_URL:http://backend-v1:8080}
+
+  upstream-b:
+    uri: ${MOVIES_SERVICE_URL:http://backend-v2:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+  endpoint:
+    health:
+      probes:
+        enabled: true
