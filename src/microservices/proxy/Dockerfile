@@ -29,6 +29,6 @@ COPY --from=build /build/target/proxy-1.0.jar /app/app.jar
 
 USER spring:spring
 
-EXPOSE 8080
+EXPOSE 8000
 
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

@@ -1,3 +1,4 @@
 .idea
 tests/postman/node_modules
 tests/postman/reports
+src/microservices/proxy/.idea

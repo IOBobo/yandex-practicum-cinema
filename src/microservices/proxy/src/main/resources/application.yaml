@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${PORT:8000}
   forward-headers-strategy: framework
 
 spring:
@@ -13,11 +13,14 @@ spring:
             uri: ${EVENTS_SERVICE_URL:http://events-service:8082}
             predicates:
               - Path=/api/events/**
+logging:
+  level:
+    org.springframework: DEBUG
+
 
 
 proxy:
-  # single | weighted | disabled
-  mode: ${GRADUAL_MIGRATION:single}
+  migration-on: ${GRADUAL_MIGRATION:false}
 
   weight: ${MOVIES_MIGRATION_PERCENT:0}
   # Used only with PROXY_MODE=weighted

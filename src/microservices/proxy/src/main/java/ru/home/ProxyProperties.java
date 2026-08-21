@@ -49,7 +49,6 @@ public class ProxyProperties {
     public static class Upstream {
 
         private String uri;
-        private int weight;
 
         public String getUri() {
             return uri;
@@ -59,13 +58,6 @@ public class ProxyProperties {
             this.uri = uri;
         }
 
-        public int getWeight() {
-            return weight;
-        }
-
-        public void setWeight(int weight) {
-            this.weight = weight;
-        }
     }
 }
 
