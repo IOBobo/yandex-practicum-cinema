@@ -13,6 +13,10 @@ spring:
             uri: ${EVENTS_SERVICE_URL:http://events-service:8082}
             predicates:
               - Path=/api/events/**
+          - id: users-upstream
+            uri: ${MONOLITH_URL:http://backend-v1:8080}
+            predicates:
+              - Path=/api/users/**
 logging:
   level:
     org.springframework: DEBUG
