@@ -12,7 +12,6 @@ spec:
       http:
         paths:
           #дополните конфигурацию для /
-          ...
           - path: /
             pathType: Prefix
             backend:

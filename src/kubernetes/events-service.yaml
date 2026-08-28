@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: events-service
-          image: ghcr.io/IOBobo/yandex-practicum-cinema/events-service:latest
+          image: ghcr.io/iobobo/yandex-practicum-cinema/events-service:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8081

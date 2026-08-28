@@ -1,0 +1,8 @@
+{
+  "payment_id": "{{paymentId}}",
+  "user_id": "{{userId}}",
+  "amount": 9.99,
+  "status": "completed",
+  "timestamp": "{{$isoTimestamp}}",
+  "method_type": "credit_card"
+}
