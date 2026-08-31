@@ -38,16 +38,16 @@ spec:
             - secretRef:
                 name: cinemaabyss-secrets
           resources:
-            {{- toYaml .Values.monolith.resources | nindent 10 }}
+            {{- toYaml .Values.eventsService.resources | nindent 10 }}
           readinessProbe:
             httpGet:
-              path: /health
+              path: /api/events/health
               port: {{ .Values.eventsService.service.targetPort }}
             initialDelaySeconds: 20
             periodSeconds: 10
           livenessProbe:
             httpGet:
-              path: /health
+              path: /api/events/health
               port: {{ .Values.eventsService.service.targetPort }}
             initialDelaySeconds: 25
             periodSeconds: 20
