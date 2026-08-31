@@ -416,7 +416,9 @@ kubectl exec -n cinemaabyss fortio-deploy-b6757cbbb-7c9qg -c istio-proxy -- pilo
 cluster.outbound|8081||movies-service.cinemaabyss.svc.cluster.local;.upstream_rq_pending_total: 311 - столько раз срабатывал circuit breaker
 You can see 21 for the upstream_rq_pending_overflow value which means 21 calls so far have been flagged for circuit breaking.
 ```
+[cb_1](./imgs/cb_1.jpg) 
 
+[cb_2](./imgs/cb_2.jpg)
 Приложите скриншот работы circuit breaker'а
 
 Удаляем все
