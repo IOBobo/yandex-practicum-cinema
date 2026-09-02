@@ -17,6 +17,8 @@ spring:
             uri: ${MONOLITH_URL:http://backend-v1:8080}
             predicates:
               - Path=/api/users/**
+              - Path=/api/payments/**
+              - Path=/api/subscriptions/**
 logging:
   level:
     org.springframework: DEBUG
