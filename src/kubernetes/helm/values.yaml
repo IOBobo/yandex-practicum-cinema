@@ -5,7 +5,7 @@ global:
 
 # Image pull secrets
 imagePullSecrets:
-  dockerconfigjson: ewoJImF1dGhzIjogewoJCSJnaGNyLmlvIjogewoJCQkiYXV0aCI6
+  dockerconfigjson: ewoJImF1dGhzIjogewoJCSJyZWdpc3RyeS5pbnQucGxhdGZvcm0udGF0YXIucnUiOiB7fSwKCQkicmVnaXN0cnkuc3RhZ2UucGxhdGZvcm0udGF0YXIucnUiOiB7fSwKCQkiYXV0aHMiOiB7CiAgICAgICAgICAgICAgICAiZ2hjci5pbyI6IHsKICAgICAgICAgICAgICAgICAgICAiYXV0aCIgOiAiYVc5aWIySnZPbWRvY0Y5TE5IRnpVWGg2YmxNMFpUTlBiSG8wY0daa1dHeEljRlZYV205WmJYQXljMjAyV1RrPSIgICAKICAgICAgICAgICAgICAgIH0KICAgICAgICB9Cgl9LAoJImNyZWRzU3RvcmUiOiAiZGVza3RvcCIsCgkiY3VycmVudENvbnRleHQiOiAiZGVza3RvcC1saW51eCIsCgkicGx1Z2lucyI6IHsKCQkiLXgtY2xpLWhpbnRzIjogewoJCQkiZW5hYmxlZCI6ICJ0cnVlIgoJCX0sCgkJImFpIjogewoJCQkiaG9va3MiOiAiYnVpbGQsYnVpbGR4IGJ1aWxkLHJ1bixjb21wb3NlIgoJCX0sCgkJImNvbXBvc2UiOiB7CgkJCSJob29rcyI6ICJsb2dzLGNvbXBvc2UgbG9ncyxjb21wb3NlIGF0dGFjaCxjb21wb3NlIHVwIgoJCX0sCgkJImRlYnVnIjogewoJCQkiaG9va3MiOiAiZXhlYyIKCQl9LAoJCSJzY291dCI6IHsKCQkJImhvb2tzIjogInB1bGwsYnVpbGR4IGJ1aWxkIgoJCX0KCX0sCgkiZmVhdHVyZXMiOiB7CgkJImhvb2tzIjogInRydWUiCgl9Cn0=
 # Database configuration
 database:
   host: postgres
@@ -33,7 +33,7 @@ database:
 monolith:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/monolith
+    repository: ghcr.io/iobobo/yandex-practicum-cinema/monolith
     tag: latest
     pullPolicy: Always
   replicas: 1
@@ -53,14 +53,14 @@ monolith:
 proxyService:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/proxy-service
+    repository: ghcr.io/iobobo/yandex-practicum-cinema/proxy-service
     tag: latest
     pullPolicy: Always
   replicas: 1
   resources:
     limits:
       cpu: 300m
-      memory: 256Mi
+      memory: 512Mi
     requests:
       cpu: 100m
       memory: 128Mi
@@ -73,7 +73,7 @@ proxyService:
 moviesService:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/movies-service
+    repository: ghcr.io/iobobo/yandex-practicum-cinema/movies-service
     tag: latest
     pullPolicy: Always
   replicas: 1
@@ -93,14 +93,14 @@ moviesService:
 eventsService:
   enabled: true
   image:
-    repository: ghcr.io/db-exp/cinemaabysstest/events-service
+    repository: ghcr.io/iobobo/yandex-practicum-cinema/events-service
     tag: latest
     pullPolicy: Always
   replicas: 1
   resources:
     limits:
       cpu: 300m
-      memory: 256Mi
+      memory: 512Mi
     requests:
       cpu: 100m
       memory: 128Mi

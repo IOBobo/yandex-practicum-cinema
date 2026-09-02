@@ -74,6 +74,7 @@ services:
     container_name: cinemaabyss-movies-service
     depends_on:
       - postgres
+      - monolith
     ports:
       - "8081:8081"
     environment:
