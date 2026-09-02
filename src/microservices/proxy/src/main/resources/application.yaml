@@ -17,7 +17,13 @@ spring:
             uri: ${MONOLITH_URL:http://backend-v1:8080}
             predicates:
               - Path=/api/users/**
+          - id: payments-upstream
+            uri: ${MONOLITH_URL:http://backend-v1:8080}
+            predicates:
               - Path=/api/payments/**
+          - id: subscriptions-upstream
+            uri: ${MONOLITH_URL:http://backend-v1:8080}
+            predicates:
               - Path=/api/subscriptions/**
 logging:
   level:
