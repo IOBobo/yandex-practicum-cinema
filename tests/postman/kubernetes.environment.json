@@ -25,21 +25,6 @@
       "value": "http://cinemaabyss.example.com",
       "type": "default",
       "enabled": true
-    },
-    {
-      "key": "userId",
-      "value": "1",
-      "enabled": true
-    },
-    {
-      "key": "movieId",
-      "value": "1",
-      "enabled": true
-    },
-    {
-      "key": "paymentId",
-      "value": "1",
-      "enabled": true
     }
   ],
   "_postman_variable_scope": "environment"
